@@ -16,7 +16,7 @@
 <script>
 (function(){
 var CHUNK=4096;
-var BUILD="588bddbfa11b7d99fd11b8bf";
+var BUILD="1c6a0e36e109490211a257b3";
 var LANES=12;
 var TRIES=10;
 var STALL=5000;
@@ -33,6 +33,14 @@ function tell(t){if(!line){line=screen();line.style.opacity=".75";document.body.
 line.textContent=t;}
 function bin(h){var a=(h||"").trim().match(/../g)||[],b=new Uint8Array(a.length);for(var i=0;i<a.length;i++)b[i]=parseInt(a[i],16);return b;}
 function pause(ms){return new Promise(function(r){setTimeout(r,ms);});}
+/* Ссылку на игру теперь шлют словами («royal-poker.online»), и мессенджеры
+   открывают её по http. Без https нет crypto.subtle — игра не запустилась
+   бы вовсе, поэтому переводим на https сами. Локальные адреса не трогаем:
+   сертификата там нет, а crypto.subtle доступен (localhost считается
+   защищённым). */
+var LOCAL=/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname||"");
+if(location.protocol==="http:"&&!LOCAL){
+location.replace("https://"+location.host+location.pathname+location.search+location.hash);return;}
 if(!window.crypto||!crypto.subtle){say("Нужен защищённый адрес","Игра открывается только по https. Откройте её по обычной ссылке сайта.");return;}
 function grab(url,head,want,ms){
 var wait=ms||STALL;
@@ -143,23 +151,52 @@ try{document.cookie=COOKIE+"="+encodeURIComponent(s)+"; Path=/; Max-Age=31536000
 try{localStorage.setItem(COOKIE,s);}catch(e){}}
 function tidyAddress(){
 try{
-var m=new URLSearchParams(location.search).get("m");
-var u=location.pathname+(m?"?m="+encodeURIComponent(m):"");
+var u=location.pathname;
 if(u!==location.pathname+location.search+location.hash)history.replaceState(null,"",u);
 }catch(e){}}
-function unwrap(s,kb){
+/* ---- КЛЮЧ ПАКЕТА ----
+   Ссылка-приглашение больше не нужна: игру открывает любой, кто зашёл на
+   сам сайт. Но ключ от app.bin не лежит в разметке открытым текстом — он
+   в k.bin, зашифрованный на «секрете места»:
+
+       секрет = "site:" + домен (www. отбрасывается)
+
+   Домен берётся из адресной строки, поэтому ключ собирается ТОЛЬКО на
+   самом сайте. Сохранённая копия, открытая с диска или выложенная на
+   чужой домен, до ключа не доберётся: домен другой — запись в k.bin не
+   расшифруется, а значит и app.bin останется двоичным шумом. Обойти это
+   можно (поднять сервер под нужным именем или переписать загрузчик), но
+   это уже не «сохранить страницу в два клика».
+
+   k.bin — НЕСКОЛЬКО записей подряд, по 92 байта каждая (12 байт iv +
+   64 символа ключа + 16 байт метки). Перебираем все: так в одном файле
+   живут и секрет сайта, и прежний ключ-приглашение (по нему игра
+   открывается у тех, кто заходил раньше, и на стендах). */
+var REC=92;
+function hostSecret(){
+var h=(location.hostname||"").toLowerCase().replace(/^www\./,"");
+return h?"site:"+h:"";}
+function unwrap(s,rec){
 return crypto.subtle.digest("SHA-256",new TextEncoder().encode("r4ndom-gate:"+s))
 .then(function(h){return crypto.subtle.importKey("raw",h,{name:"AES-GCM"},false,["decrypt"]);})
-.then(function(k){return crypto.subtle.decrypt({name:"AES-GCM",iv:kb.slice(0,12)},k,kb.slice(12));})
+.then(function(k){return crypto.subtle.decrypt({name:"AES-GCM",iv:rec.slice(0,12)},k,rec.slice(12));})
 .then(function(p){return new TextDecoder().decode(p).trim();});}
 function openGate(kb){
+var recs=[],p=0;
+for(p=0;p+REC<=kb.length;p+=REC)recs.push(kb.slice(p,p+REC));
+if(!recs.length)recs.push(kb);
 var list=[],seen={};
-[fromLink(),readCookie(),stored()].forEach(function(s){if(s&&!seen[s]){seen[s]=1;list.push(s);}});
-var i=0;
+[hostSecret(),fromLink(),readCookie(),stored()].forEach(function(s){if(s&&!seen[s]){seen[s]=1;list.push(s);}});
+var i=0,j=0;
 function next(){
 if(i>=list.length)return Promise.reject("gate");
-var s=list[i++];
-return unwrap(s,kb).then(function(h){remember(s);return h;},next);}
+var s=list[i],rec=recs[j];
+j++;if(j>=recs.length){j=0;i++;}
+return unwrap(s,rec).then(function(h){
+/* Ключ-приглашение запоминаем, секрет места — нет: он и так выводится
+   из адреса, а в куке был бы лишним. */
+if(s.indexOf("site:")!==0)remember(s);
+return h;},next);}
 return next();}
 var KEY=null;
 tell("Соединение…");
@@ -179,7 +216,7 @@ var s=document.createElement("style");s.textContent=o.css;document.head.appendCh
 document.body.innerHTML=o.html;
 for(var i=0;i<o.js.length;i++){var t=document.createElement("script");t.textContent=o.js[i];document.body.appendChild(t);}
 })["catch"](function(e){
-if(e==="gate")say("Нужна ссылка-приглашение","Откройте игру по той ссылке, которую вам прислали. Если открывали именно по ней — попросите новую.");
+if(e==="gate")say("Игра открывается на royal-poker.online","Эта копия запущена не с сайта игры, поэтому ключ к ней не подходит. Откройте royal-poker.online.");
 else if(e==="nokbin")say("Не загрузился файл k.bin","Проверьте, что k.bin лежит в корне сайта рядом с index.html.");
 else if(e==="badkey")say("Ключ повреждён","k.bin не от этой сборки. Выложите k.bin и app.bin из одной и той же сборки.");
 else if(e==="mismatch")say("Пакет не совпал с ключом","app.bin и k.bin из разных сборок. Выложите оба файла из одной сборки и обновите страницу.");

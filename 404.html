@@ -9,10 +9,12 @@
 <body style="margin:0;background:#0a0d10">
 <script>
 /* GitHub Pages отдаёт этот файл на ЛЮБОЙ несуществующий адрес.
-   Приглашения выглядят как royal-poker.online/КЛЮЧ: файла с таким
-   именем на сайте нет, поэтому человек попадает сюда. Ключ переносим
-   в хвост адреса (#k=…, на сервер он не уходит) и открываем главную,
-   а проверяет и запоминает его загрузчик. Самого ключа здесь НЕТ:
+   Ссылок-приглашений вида royal-poker.online/КЛЮЧ больше нет: игра
+   открывается прямо на сайте. Но старые ссылки у людей остались, да и
+   опечатка в адресе не должна упираться в пустую страницу — поэтому
+   любой неизвестный путь просто ведёт на главную.
+   Ключ из старой ссылки по дороге переносим в хвост адреса (#k=…, на
+   сервер он не уходит): загрузчик умеет и его. Самого ключа здесь НЕТ —
    эта страница лежит в открытом репозитории. */
 (function(){
   var parts = location.pathname.split("/").filter(Boolean);
@@ -22,13 +24,8 @@
   if (/\.github\.io$/i.test(location.hostname) && parts.length) root = "/" + parts.shift() + "/";
   var key = parts.length === 1 ? parts[0] : "";
   try { key = decodeURIComponent(key); } catch (e) {}
-  if (/^[A-Za-z0-9_-]{6,64}$/.test(key)) {
-    var m = "";
-    try { m = new URLSearchParams(location.search).get("m") || ""; } catch (e) {}
-    location.replace(root + (m ? "?m=" + encodeURIComponent(m) : "") + "#k=" + encodeURIComponent(key));
-    return;
-  }
-  document.body.innerHTML = '<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font:16px/1.5 system-ui,sans-serif;color:#e9c887;opacity:.6">Not found</div>';
+  var hash = /^[A-Za-z0-9_-]{6,64}$/.test(key) ? "#k=" + encodeURIComponent(key) : "";
+  location.replace(root + hash);
 })();
 </script>
 </body>
