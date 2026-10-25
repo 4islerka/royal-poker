@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="224" height="336" viewBox="0 0 224 336" role="img" aria-labelledby="title description">
+  <title id="title">Wild color choice</title>
+  <desc id="description">Four color sectors, a four-part prism emblem, and matching upright and inverted corner indices.</desc>
+  <defs><clipPath id="card-clip"><rect x="1" y="1" width="222" height="334" rx="17"/></clipPath></defs>
+  <g clip-path="url(#card-clip)">
+    <rect x="1" y="1" width="222" height="334" fill="#18263D"/>
+    <path d="M 0 0 H 224 L 112 168 Z" fill="#D7474D"/>
+    <path d="M 224 0 V 336 L 112 168 Z" fill="#E9B949"/>
+    <path d="M 224 336 H 0 L 112 168 Z" fill="#168573"/>
+    <path d="M 0 336 V 0 L 112 168 Z" fill="#3276CA"/>
+  </g>
+  <rect x="12" y="12" width="200" height="312" rx="11" fill="none" stroke="#FFF9EE" stroke-opacity="0.38" stroke-width="1"/>
+  <path d="M 80 74 H 144 L 187 117 V 219 L 144 262 H 80 L 37 219 V 117 Z" fill="#18263D" fill-opacity="0.13" stroke="#FFF9EE" stroke-opacity="0.26" stroke-width="1.2"/>
+  <g fill="none" stroke="#FFF9EE" stroke-width="2" stroke-linecap="round" opacity="0.64">
+    <path d="M 89 39 H 135 M 104 45 H 120"/>
+    <path d="M 89 297 H 135 M 104 291 H 120"/>
+  </g>
+  <g transform="translate(112 168)">
+    <path d="M 0 -69 L 69 0 L 0 69 L -69 0 Z" fill="#18263D" stroke="#FFF9EE" stroke-opacity="0.55" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(0)" fill="#D7474D" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(90)" fill="#E9B949" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(180)" fill="#168573" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(270)" fill="#3276CA" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M 0 -6 L 6 0 L 0 6 L -6 0 Z" fill="#FFF9EE"/>
+  </g>
+  <g><g transform="translate(36 43) scale(0.24)"><path d="M 0 -69 L 69 0 L 0 69 L -69 0 Z" fill="#18263D"/><path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(0)" fill="#D7474D" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(90)" fill="#E9B949" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(180)" fill="#168573" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(270)" fill="#3276CA" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/></g><g transform="translate(36 71)" fill="#FFF9EE" stroke="#18263D" stroke-width="1.1"><path d="M 0 -5 L 5 0 L 0 5 L -5 0 Z"/><path d="M -7 0 H 7 M 0 -7 V 7" fill="none"/></g></g>
+  <g transform="translate(224 336) rotate(180)"><g transform="translate(36 43) scale(0.24)"><path d="M 0 -69 L 69 0 L 0 69 L -69 0 Z" fill="#18263D"/><path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(0)" fill="#D7474D" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(90)" fill="#E9B949" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(180)" fill="#168573" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M 0 -59 L 31 -28 L 12 -9 H -12 L -31 -28 Z" transform="rotate(270)" fill="#3276CA" stroke="#FFF9EE" stroke-width="2.4" stroke-linejoin="round"/></g><g transform="translate(36 71)" fill="#FFF9EE" stroke="#18263D" stroke-width="1.1"><path d="M 0 -5 L 5 0 L 0 5 L -5 0 Z"/><path d="M -7 0 H 7 M 0 -7 V 7" fill="none"/></g></g>
+  <rect x="1" y="1" width="222" height="334" rx="17" fill="none" stroke="#18263D" stroke-width="2"/>
+</svg>

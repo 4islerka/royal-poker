@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="224" height="336" viewBox="0 0 224 336" role="img" aria-labelledby="title description">
+  <title id="title">Kvarta card back</title>
+  <desc id="description">An original emblem of four angular brackets around a diamond. A dark field, fine diamond outlines, and four-color edge accents. The back is invariant under a half turn.</desc>
+  <rect x="1" y="1" width="222" height="334" rx="17" fill="#18263D"/>
+  <rect x="12" y="12" width="200" height="312" rx="11" fill="none" stroke="#FFF9EE" stroke-opacity="0.55" stroke-width="1"/>
+  <rect x="18" y="18" width="188" height="300" rx="7" fill="none" stroke="#FFF9EE" stroke-opacity="0.13" stroke-width="1"/>
+  <g fill="none" stroke="#FFF9EE" stroke-width="1">
+    <path d="M 112 60 L 201 168 L 112 276 L 23 168 Z" stroke-opacity="0.16"/>
+    <path d="M 112 77 L 189 168 L 112 259 L 35 168 Z" stroke-opacity="0.33"/>
+    <path d="M 112 94 L 177 168 L 112 242 L 47 168 Z" stroke-opacity="0.16"/>
+    <path d="M 29 106 V 139 M 29 197 V 230 M 195 106 V 139 M 195 197 V 230" stroke-opacity="0.22"/>
+  </g>
+  <g transform="translate(112 168) rotate(45)" fill="none" stroke="#FFF9EE" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M -32 -9 V -32 H -9"/>
+    <path d="M -32 -9 V -32 H -9" transform="rotate(90)"/>
+    <path d="M -32 -9 V -32 H -9" transform="rotate(180)"/>
+    <path d="M -32 -9 V -32 H -9" transform="rotate(270)"/>
+    <rect x="-10" y="-10" width="20" height="20" stroke-width="3"/>
+  </g>
+  <g><rect x="79" y="33" width="12" height="4" rx="2" fill="#D7474D"/>
+<rect x="97" y="33" width="12" height="4" rx="2" fill="#E9B949"/>
+<rect x="115" y="33" width="12" height="4" rx="2" fill="#168573"/>
+<rect x="133" y="33" width="12" height="4" rx="2" fill="#3276CA"/></g>
+  <g transform="translate(224 336) rotate(180)"><rect x="79" y="33" width="12" height="4" rx="2" fill="#D7474D"/>
+<rect x="97" y="33" width="12" height="4" rx="2" fill="#E9B949"/>
+<rect x="115" y="33" width="12" height="4" rx="2" fill="#168573"/>
+<rect x="133" y="33" width="12" height="4" rx="2" fill="#3276CA"/></g>
+  <g fill="#FFF9EE" opacity="0.65"><circle cx="112" cy="53" r="1.8"/><circle cx="112" cy="283" r="1.8"/></g>
+  <rect x="1" y="1" width="222" height="334" rx="17" fill="none" stroke="#18263D" stroke-width="2"/>
+</svg>
