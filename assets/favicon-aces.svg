@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+<!-- Анимированная иконка вкладки: красный и чёрный туз периодически меняются
+     местами. Поворот -12° уже встроен в саму графику обеих карт (её рисовал
+     GPT Codex, см. _web/favicon/codex-prompt.md) — здесь только перемещение,
+     чтобы не удваивать поворот поверх уже повёрнутой карты. Фон прозрачный. -->
+<style>
+  .ace { transform-box: fill-box; transform-origin: 50% 50%; }
+  .aceRed   { animation: aceSwapRed 6s cubic-bezier(.45,0,.2,1) infinite; }
+  .aceBlack { animation: aceSwapBlack 6s cubic-bezier(.45,0,.2,1) infinite; }
+  @keyframes aceSwapRed {
+    0%, 38%   { transform: translate(-25px,-21px); }
+    50%       { transform: translate(0,0) scale(.88); }
+    62%, 100% { transform: translate(25px,21px); }
+  }
+  @keyframes aceSwapBlack {
+    0%, 38%   { transform: translate(25px,21px); }
+    50%       { transform: translate(0,0) scale(.88); }
+    62%, 100% { transform: translate(-25px,-21px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ace { animation: none !important; }
+    .aceRed   { transform: translate(-16px,-13px); }
+    .aceBlack { transform: translate(16px,13px); }
+  }
+</style>
+<g class="ace aceBlack">
+  <g transform="rotate(-12 120 120)">
+    <rect x="46" y="19" width="148" height="202" rx="15" fill="#FFFFFF" stroke="#C9A14A" stroke-width="5"/>
+    <g fill="#0D0D0F">
+      <path d="M120 73C105 93 67 111 67 130C67 150 92 157 110 139C109 153 104 165 98 173H142C136 165 131 153 130 139C148 157 173 150 173 130C173 111 135 93 120 73Z"/>
+      <g>
+        <path fill-rule="evenodd" d="M60 57L68 31H76L84 57H78L76 51H68L66 57ZM69.5 46H74.5L72 38Z"/>
+        <path d="M72 63C68 68 60 72 60 77C60 82 66 84 69.5 80L67 87H77L74.5 80C78 84 84 82 84 77C84 72 76 68 72 63Z"/>
+      </g>
+      <g transform="rotate(180 120 120)">
+        <path fill-rule="evenodd" d="M60 57L68 31H76L84 57H78L76 51H68L66 57ZM69.5 46H74.5L72 38Z"/>
+        <path d="M72 63C68 68 60 72 60 77C60 82 66 84 69.5 80L67 87H77L74.5 80C78 84 84 82 84 77C84 72 76 68 72 63Z"/>
+      </g>
+    </g>
+  </g>
+</g>
+<g class="ace aceRed">
+  <g transform="rotate(-12 120 120)">
+    <rect x="46" y="19" width="148" height="202" rx="15" fill="#FFFFFF" stroke="#C9A14A" stroke-width="5"/>
+    <g fill="#D21E35">
+      <path d="M120 98C102 72 70 79 67 103C63 128 96 151 120 172C144 151 177 128 173 103C170 79 138 72 120 98Z"/>
+      <g>
+        <path fill-rule="evenodd" d="M60 57L68 31H76L84 57H78L76 51H68L66 57ZM69.5 46H74.5L72 38Z"/>
+        <path d="M72 68C68 62 60 63 60 70C60 76 68 81 72 85C76 81 84 76 84 70C84 63 76 62 72 68Z"/>
+      </g>
+      <g transform="rotate(180 120 120)">
+        <path fill-rule="evenodd" d="M60 57L68 31H76L84 57H78L76 51H68L66 57ZM69.5 46H74.5L72 38Z"/>
+        <path d="M72 68C68 62 60 63 60 70C60 76 68 81 72 85C76 81 84 76 84 70C84 63 76 62 72 68Z"/>
+      </g>
+    </g>
+  </g>
+</g>
+</svg>
