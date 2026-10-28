@@ -2,20 +2,28 @@
 <!-- Анимированная иконка вкладки: красный и чёрный туз периодически меняются
      местами. Поворот -12° уже встроен в саму графику обеих карт (её рисовал
      GPT Codex, см. _web/favicon/codex-prompt.md) — здесь только перемещение,
-     чтобы не удваивать поворот поверх уже повёрнутой карты. Фон прозрачный. -->
+     чтобы не удваивать поворот поверх уже повёрнутой карты. Фон прозрачный.
+     Таймингу 2026-10-29: сама смена мест — 2 с, дальше пауза, весь цикл —
+     10 с. За 10 с проходят ДВЕ смены (туда и обратно, иначе цикл не
+     замкнётся бесшовно): 0–20% — смена (2 с), 20–50% — пауза (3 с),
+     50–70% — смена обратно (2 с), 70–100% — пауза (3 с). */ -->
 <style>
   .ace { transform-box: fill-box; transform-origin: 50% 50%; }
-  .aceRed   { animation: aceSwapRed 6s cubic-bezier(.45,0,.2,1) infinite; }
-  .aceBlack { animation: aceSwapBlack 6s cubic-bezier(.45,0,.2,1) infinite; }
+  .aceRed   { animation: aceSwapRed 10s cubic-bezier(.45,0,.2,1) infinite; }
+  .aceBlack { animation: aceSwapBlack 10s cubic-bezier(.45,0,.2,1) infinite; }
   @keyframes aceSwapRed {
-    0%, 38%   { transform: translate(-25px,-21px); }
-    50%       { transform: translate(0,0) scale(.88); }
-    62%, 100% { transform: translate(25px,21px); }
+    0%, 20%   { transform: translate(-25px,-21px); }
+    10%       { transform: translate(0,0) scale(.88); }
+    50%, 70%  { transform: translate(25px,21px); }
+    60%       { transform: translate(0,0) scale(.88); }
+    100%      { transform: translate(-25px,-21px); }
   }
   @keyframes aceSwapBlack {
-    0%, 38%   { transform: translate(25px,21px); }
-    50%       { transform: translate(0,0) scale(.88); }
-    62%, 100% { transform: translate(-25px,-21px); }
+    0%, 20%   { transform: translate(25px,21px); }
+    10%       { transform: translate(0,0) scale(.88); }
+    50%, 70%  { transform: translate(-25px,-21px); }
+    60%       { transform: translate(0,0) scale(.88); }
+    100%      { transform: translate(25px,21px); }
   }
   @media (prefers-reduced-motion: reduce) {
     .ace { animation: none !important; }
